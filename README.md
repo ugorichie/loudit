@@ -1,66 +1,33 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+                PROJECT NAME :  LOUDIT
+                PROJECT AIM : 
+                BASIC LANG/TOOLS : 
+            
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+ DEVELOPMENT CURVE 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+     1. NAME YOUR APP / TITLE /  :
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+ APP-NAME, config('app.name') : Unlike traditional way of outcoding/naming your app, there is a semi-dynamic way to name your app which we did.
+ -> in the .env file, APP-NAME has a dummy text 'laravel', there we put in out application-name , eg: 'loudIt'
+ -> in the config folder, we go into it , then head to 'app.php' file, there are many sets of associative-arrays in this file, we look for one which its 'key' is 'name' ['name' => .env('APP-NAME', 'LARAVEL')], then we change the ';aravel' dummy text too , to our app name
+ -> the .env('app-name', 'laravel') tells the browser to go into our '.env' file, look for the value of APP-NAME, and if there is none, use LARAVEL as a fallback.
+ --->>>   how do you pass this in your code?  wherever its required, like that page-title, header etc, just put in the (config function - containing app.name) --> {{config('app.name')}}.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+    2. HOW TO USE LARAVEL's  @yield(''), @include() , @section() , @endsection()
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+All of these functions are used to render pages to another page, just like that PHPs require() and include() function.
+lets say we want to make our header/footer page dynamic, we need to create a seperate file that contains only the header/footer code eg: 'layout/layout.blade.php' 
+---->  if we want to only inlcude the layout/layout.blade.php, we use the 'include('layout/layout') -> no need to write 'blade.php' in it as laravel is samrt enough to understand what you meant
+---->  if in a case where you want a content in-between a dynamic page (eg: layout/layout.blade.php), in this case we use the 'yield()' function.   in the space where you need to content to be, write yield('content') , then head over to the page containing the content, at the top, write 'extends('layout.layout')' , secondly we need to wrap the content to be placed inside the dynamic page in a 'section()' tag.    hence the section() has an open tag @section('content') and a closing tag @endsection().  
+TO understand better, refer to   LAYOUT/LAYOUT.BLADE.PHP page  and  HOME.BLADE.PHPYOU
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    3. DATABASE AND MORE.
+firstly, it is possible to connect to your database from your command line, and create new database but its okay to use the traditional way of creating a database from your phpmyadmin
 
-## Laravel Sponsors
+----> YOU have the choice to work with not only 'mysql' databse, but you can also integrate 3 other types of database in laravel, all you need do is head over to the 'config\database.php' , scroll to see what other options could be compartible, then go to your '.env' file and change the value of 'DB_CONNECTION' to your selected database connection.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-----> MIGRATIONS: this is the way to create TABLES in the database, tells what columns / keys / column data-types we need for out table.
+------> php artisan make:migration create_louds_table  ##### command to create a table
