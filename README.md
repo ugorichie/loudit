@@ -31,3 +31,10 @@ firstly, it is possible to connect to your database from your command line, and 
 
 -----> MIGRATIONS: this is the way to create TABLES in the database, tells what columns / keys / column data-types we need for out table.
 ------> php artisan make:migration create_louds_table  ##### command to create a table
+------> php artisan make:model idea   #### command to create a model ('columns you intend to fill when submitting to db')
+
+    4. DATABASE SEEDING
+there are severals ways to seed data into the database (PUT DUMMY DATA INTO THE DB)
+-----> BY USING FACTORIES / DATABASE SEEDER  
+-----> BY USING MODELS AND CONTROLLERS (AVAILABLE IN LARAVEL 10 upwards) -> where you 'use' a MODEL, defined in a controller (eg:   $loud = new loud([ 'loud' => 'come to me' , likes => '2'])) and call the global availaible 'save()' function -----> check 'controller.dashboard.php'
+-----> BY PHP_MY_ADMIN 

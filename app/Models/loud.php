@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class loud extends Model
 {
     use HasFactory;
+
+
+    protected $fillable = [
+        'loud',
+        'loud',
+        // 'password',
+    ];
+
 }

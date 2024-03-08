@@ -21,7 +21,7 @@ return new class extends Migration
         Schema::create('louds', function (Blueprint $table) {
             $table->id();
             $table->string('loud');
-            $table->interger('likes');
+            $table->smallInteger('likes');
             $table->timestamps();
         });
     }
