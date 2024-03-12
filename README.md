@@ -74,3 +74,14 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
     @endif
 
 
+
+(  7.) SHOWING FORM ERROR
+      this is an effort to show error associated to a form, om input.
+      traditionally it is placed just below the form field 
+      ------> @error('input_name')
+                   <span> {{$message}} </span> 
+              @enderror ----> this would output whatever error caught by laravels validation 
+
+
+
+(  8.) PAGINATION

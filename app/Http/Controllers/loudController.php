@@ -16,24 +16,22 @@ class loudController extends Controller
                 //$loud = $_POST['loud']; ---> this is to show that we can have POST request on laravel
 
                         //WAYS TO INSERT INTO THE DB
+
+                        $data = $request->validate([
+                    'loud' => 'required|max:300|min:1'
+
+                ]);
+
                 //1. Using the MODEL way to insert into the DB --> App\model\loud
                 $loud = new loud([
-                    'loud' => request()->get('loud')
+                    'loud' => $data['loud']      // or request()->get('loud')
                 ]);
                 $loud ->save(); 
-
-
-            //2. Using VAlidation and Model way ... 
-                // $data = $request->validate([
-                //     'loud' => 'required || max:300 '
-
-                // ]);
-
+                        //OR
                 // $loud = loud::create([
                 //     'loud' => $data['loud'],
                 // ]);
-                 
-
+                        //OR
                 // Using the QUERY STRING METHOD -> support\facades\db
                     // $submit = DB::table('louds')->insert([
                     //     'loud' => $data['loud'],
