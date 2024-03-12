@@ -6,7 +6,9 @@
 
  DEVELOPMENT CURVE 
 
-     1. NAME YOUR APP / TITLE /  :
+
+
+   ( 1.) NAME YOUR APP / TITLE /  :
 
  APP-NAME, config('app.name') : Unlike traditional way of outcoding/naming your app, there is a semi-dynamic way to name your app which we did.
  -> in the .env file, APP-NAME has a dummy text 'laravel', there we put in out application-name , eg: 'loudIt'
@@ -15,7 +17,9 @@
  --->>>   how do you pass this in your code?  wherever its required, like that page-title, header etc, just put in the (config function - containing app.name) --> {{config('app.name')}}.
 
 
-    2. HOW TO USE LARAVEL's  @yield(''), @include() , @section() , @endsection()
+
+
+ ( 2. )HOW TO USE LARAVEL's  @yield(''), @include() , @section() , @endsection()
 
 All of these functions are used to render pages to another page, just like that PHPs require() and include() function.
 lets say we want to make our header/footer page dynamic, we need to create a seperate file that contains only the header/footer code eg: 'layout/layout.blade.php' 
@@ -24,7 +28,8 @@ lets say we want to make our header/footer page dynamic, we need to create a sep
 TO understand better, refer to   LAYOUT/LAYOUT.BLADE.PHP page  and  HOME.BLADE.PHPYOU
 
 
-    3. DATABASE AND MORE.
+
+   ( 3.) DATABASE AND MORE.
 firstly, it is possible to connect to your database from your command line, and create new database but its okay to use the traditional way of creating a database from your phpmyadmin
 
 ----> YOU have the choice to work with not only 'mysql' databse, but you can also integrate 3 other types of database in laravel, all you need do is head over to the 'config\database.php' , scroll to see what other options could be compartible, then go to your '.env' file and change the value of 'DB_CONNECTION' to your selected database connection.
@@ -33,8 +38,26 @@ firstly, it is possible to connect to your database from your command line, and 
 ------> php artisan make:migration create_louds_table  ##### command to create a table
 ------> php artisan make:model idea   #### command to create a model ('columns you intend to fill when submitting to db')
 
-    4. DATABASE SEEDING
+  
+  
+   ( 4.)  DATABASE SEEDING
 there are severals ways to seed data into the database (PUT DUMMY DATA INTO THE DB)
 -----> BY USING FACTORIES / DATABASE SEEDER  
------> BY USING MODELS AND CONTROLLERS (AVAILABLE IN LARAVEL 10 upwards) -> where you 'use' a MODEL, defined in a controller (eg:   $loud = new loud([ 'loud' => 'come to me' , likes => '2'])) and call the global availaible 'save()' function -----> check 'controller.dashboard.php'
+-----> BY USING MODELS AND CONTROLLERS (AVAILABLE IN LARAVEL 10 upwards) -> where you 'use' a MODEL, defined in a controller (eg:   $loud = new loud(['loud' => 'come to me' , likes => '2'])) and call the global availaible 'save()' function -----> check 'controller.dashboard.php'
 -----> BY PHP_MY_ADMIN 
+
+
+
+  ( 5.) SUBMIT VIA FORM 
+this would entail submitting to the database via a form, which can also be done in 3 ways
+
+----> CAKE PHP: by traditional use of $_POST['name'] -: But this has no validation process, you would have to specify yours
+
+----> MODELS USE: This works by instantiating a new MODEL i.e $loud = new loud([]) , then the necessary info to insert to the database is written in the array ----> SEE BLOW
+     $loud = new loud([
+         'loud' => request()->get('loud')    ///// get('loud') means get values from the front end form with the name loud
+       ]);
+     $loud ->save(); /////// save() function means to save to the DB.
+
+
+-------> By HTTP\REQUEST format: here we use the db facade for query-strings or we use the laravel predefined ::create method

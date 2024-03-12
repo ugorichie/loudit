@@ -12,7 +12,7 @@ class loud extends Model
 
     protected $fillable = [
         'loud',
-        'loud',
+        //'likes',
         // 'password',
     ];
 

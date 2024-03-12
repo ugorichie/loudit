@@ -15,7 +15,7 @@
 </head>
 
 <body>
-   @include('layout.nav')
+   @include('includes.layout.nav')
     {{-- end of header code --}}
 
     @yield('content')

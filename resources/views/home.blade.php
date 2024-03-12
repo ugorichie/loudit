@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('includes.layout.headerfoter')
 
     @section('content')
         
@@ -41,19 +41,9 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Idea created Successfully
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                    @include('includes.success')
                 <h4> Loud yours ideas </h4>
-                <div class="row">
-                    <div class="mb-3">
-                        <textarea class="form-control" id="idea" rows="3"></textarea>
-                    </div>
-                    <div class="">
-                        <button class="btn btn-dark"> Loud it </button>
-                    </div>
-                </div>
+                @include('includes.loudform')
                 <hr>
                 <div class="mt-3">
                     <div class="card">
