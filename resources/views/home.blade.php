@@ -41,7 +41,9 @@
                 </div>
             </div>
             <div class="col-6">
+                @if(session()->has('success'))
                     @include('includes.success')
+                @endif
                 <h4> Loud yours ideas </h4>
                 @include('includes.loudform')
                 <hr>

@@ -61,3 +61,16 @@ this would entail submitting to the database via a form, which can also be done 
 
 
 -------> By HTTP\REQUEST format: here we use the db facade for query-strings or we use the laravel predefined ::create method
+
+
+
+( 6.) HAVING A SUCCESS/FLASJH MESSAGE 
+This only is required when we create a post and its successful, you want to tell the user a success message.
+How to do that?
+In the return redirect(), you append a with() function; e.g  return redirect('home')->with('success', 'created successfuly').
+-----> How to display in the front end
+    @if(session()->has('success'))
+        include('success.blade.php')
+    @endif
+
+

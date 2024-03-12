@@ -40,7 +40,13 @@ class loudController extends Controller
                     //    // 'likes' => 3
                     // ]);
 
-         
+                  //  return view('home');
+            if($loud){
+
+                return redirect()->route('home')-> with('success', 'Loud was created successfully');
+            }else{
+                return view('home');
+            }
 
     }
 }
