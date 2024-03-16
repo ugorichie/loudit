@@ -113,6 +113,10 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
     NB: the $id is passed from the link/query string, which is also appended to the respective {{route('loud.delete')}}.
 
 
+  ((( theres something called ROUTE MODEL BINDING, this is you passing the 'model' in the function as an argument in the public function, together with the $id. 
+  In this way, laravel is smart enough to bind the model with the ID in the back, and hence you can do your actions like DELETE/UPDATE )))
+
+
 (  10.)  READ ACTION
         to view, just a 
 

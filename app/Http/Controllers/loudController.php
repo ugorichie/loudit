@@ -60,13 +60,26 @@ class loudController extends Controller
     }
 
 
-    public function delete_loud($id){
-        $loud = loud::where('id',$id)->firstOrfail();
-        // dump($loud );
-        // die();
-        $loud->delete();
+    public function delete_loud(loud $id){
+        // $loud = loud::where('id',$id)->firstOrfail();
+        // // dump($loud );
+        // // die();
+        // $loud->delete();
+        $id->delete();
 
         return redirect()->route('loud.index')-> with('success', 'that idea! not LOUD anymore');
+
+    }
+
+    public function get_single_loud($id){
+        $louds = DB::table('louds')->where('id',$id)->get();
+        return view('single',['louds'=>$louds]);
+        
+
+                    //     or 
+                    // via ELOQUENT MODEL
+
+            //  return view('single',['louds'=>$id]); --> doesnt work yet
 
     }
 

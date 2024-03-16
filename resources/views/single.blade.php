@@ -1,3 +1,6 @@
+@extends('includes.layout.headerfoter')
+@section('content')
+
 <div class="container py-4">
         <div class="row">
             <div class="col-3">
@@ -108,9 +111,6 @@
 
                 </div>
                  @endforeach
-                 {{$louds->links()}}
-                 {{-- NB: this above is for the paginate button, the $louds is the variable gotten from the controller in which 
-                 the eloquent:model result from database is stored in --}}
 
 
             </div>
@@ -165,3 +165,4 @@
             </div>
         </div>
     </div>
+    @endsection

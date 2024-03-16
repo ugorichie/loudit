@@ -30,7 +30,7 @@ Route::get('/terms', function(){
     return view('terms');
 });
 
-Route::get('/home', [loudController::class, 'get_all_louds'])-> name('loud.index'); //-> HOME PAGE
+Route::get('/', [loudController::class, 'get_all_louds'])-> name('loud.index'); //-> HOME PAGE
 
 Route::get('/home/{id}', [loudController::class, 'get_single_loud'])-> name('loud.show'); //-> TO SHOW SINGLE
 

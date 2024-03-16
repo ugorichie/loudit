@@ -64,12 +64,12 @@
                                     
                                 </div>
                                 <div class="align-items-left">
-                                    {{-- <form action="{{route("loud.view",$loud->id)}}" method="GET">
-                                        <button class="btn btn-info btn-sm ms-1"> view </button>
-                                    </form> --}}
+                                   
+                                    
                                     <form action="{{route("loud.delete",$loud->id)}}" method="POST">
                                         @csrf
                                         @method('delete')
+                                        <a href="{{route("loud.show",$loud->id)}}"  class="btn btn-info btn-sm"> view </a>
                                         <button class="btn btn-danger btn-sm"> X </button>
                                     </form>
                                 </div>
