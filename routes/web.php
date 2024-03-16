@@ -22,13 +22,19 @@ use Illuminate\Support\Facades\Route;
 ## BELOW ARE THE MAIN ROUTES
 ////////////////-- 
 
-Route::get('/', function(){
-    return view('home');
-})->name('home');
+// Route::get('/', function(){
+//     return view('home');
+// })->name('home');
 
 Route::get('/terms', function(){
     return view('terms');
 });
 
-Route::post('/loud', [loudController::class, 'create_loud'])-> name('loud.create');
+Route::get('/home', [loudController::class, 'get_all_louds'])-> name('loud.index'); //-> HOME PAGE
+
+Route::get('/home/{id}', [loudController::class, 'get_single_loud'])-> name('loud.show'); //-> TO SHOW SINGLE
+
+Route::post('/create-loud', [loudController::class, 'create_loud'])-> name('loud.create'); //-> TO CREATE 
+
+Route::delete('/delete-loud/{id}', [loudController::class, 'delete_loud'])-> name('loud.delete'); //-> TO DELETE
 

@@ -19,7 +19,7 @@
 
 
 
- ( 2. )HOW TO USE LARAVEL's  @yield(''), @include() , @section() , @endsection()
+ (  2.)HOW TO USE LARAVEL's  @yield(''), @include() , @section() , @endsection()
 
 All of these functions are used to render pages to another page, just like that PHPs require() and include() function.
 lets say we want to make our header/footer page dynamic, we need to create a seperate file that contains only the header/footer code eg: 'layout/layout.blade.php' 
@@ -29,7 +29,7 @@ TO understand better, refer to   LAYOUT/LAYOUT.BLADE.PHP page  and  HOME.BLADE.P
 
 
 
-   ( 3.) DATABASE AND MORE.
+  (  3.) DATABASE AND MORE.
 firstly, it is possible to connect to your database from your command line, and create new database but its okay to use the traditional way of creating a database from your phpmyadmin
 
 ----> YOU have the choice to work with not only 'mysql' databse, but you can also integrate 3 other types of database in laravel, all you need do is head over to the 'config\database.php' , scroll to see what other options could be compartible, then go to your '.env' file and change the value of 'DB_CONNECTION' to your selected database connection.
@@ -40,7 +40,7 @@ firstly, it is possible to connect to your database from your command line, and 
 
   
   
-   ( 4.)  DATABASE SEEDING
+   (  4.)  DATABASE SEEDING
 there are severals ways to seed data into the database (PUT DUMMY DATA INTO THE DB)
 -----> BY USING FACTORIES / DATABASE SEEDER  
 -----> BY USING MODELS AND CONTROLLERS (AVAILABLE IN LARAVEL 10 upwards) -> where you 'use' a MODEL, defined in a controller (eg:   $loud = new loud(['loud' => 'come to me' , likes => '2'])) and call the global availaible 'save()' function -----> check 'controller.dashboard.php'
@@ -48,7 +48,7 @@ there are severals ways to seed data into the database (PUT DUMMY DATA INTO THE 
 
 
 
-  ( 5.) SUBMIT VIA FORM 
+  (  5.) SUBMIT VIA FORM 
 this would entail submitting to the database via a form, which can also be done in 3 ways
 
 ----> CAKE PHP: by traditional use of $_POST['name'] -: But this has no validation process, you would have to specify yours
@@ -85,3 +85,35 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
 
 
 (  8.) PAGINATION
+
+    pagination simply means to sectionalize your results fetched from database into pages (where users can click next/previous) to see more results from the database.
+    NB: that the paginate() function only works for eloquent model (loud::orderBy('column_name', 'desc')->paginate(5))
+    
+    -----> refer to (loudcontroller::class, 'get_all_louds') for better understanding
+
+    HOW TO ADD THE PAGINATION BUTTON IN THE BLADE FILE.
+      ---->    {{$louds->links()}}
+      //  {{-- NB: this above is for the paginate button, the $louds is the variable gotten from the controller in which 
+                 the eloquent:model result from database is stored in --}}
+        BUT AFTER THIS, YOU NEED TO SYLE THE BUTTON. THE CSS NEEDS TO BE CORRECTED.
+        TO CORRECT THIS -->  go into a file called 'PROVIDERS' then go into 'AppServiceProvider.php' 
+        THEN in the file, head down 'public function boot' and call the PAGINATOR static method -->  i.e PAGINATOR::useBootstrapFive()
+
+
+
+(  9.)  DELETE ACTION
+        we can have this in 3 ways
+        --> RAW SQL.
+        --> QUERY METHOD (facades\support\db)
+        --> ELOQUENT MODEL (app\model)
+      in this project, we want to work/be proficient with ELOQUENT MODEL.
+      all you need do in the function is use the static method on our model (loud)
+      --> i.e 
+      loud::where('id',$id)->firstOrfail()-> delete()
+    NB: the $id is passed from the link/query string, which is also appended to the respective {{route('loud.delete')}}.
+
+
+(  10.)  READ ACTION
+        to view, just a 
+
+

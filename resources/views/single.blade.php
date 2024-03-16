@@ -1,9 +1,4 @@
-@extends('includes.layout.headerfoter')
-
-    @section('content')
-        
-    
-    <div class="container py-4">
+<div class="container py-4">
         <div class="row">
             <div class="col-3">
                 <div class="card overflow-hidden">
@@ -41,12 +36,6 @@
                 </div>
             </div>
             <div class="col-6">
-                @if(session()->has('success'))
-                    @include('includes.success')
-                @endif
-                <h4> Loud yours ideas </h4>
-                @include('includes.loudform')
-                <hr>
 
                 @foreach($louds as $loud )
                 <div class="mt-3">
@@ -64,9 +53,6 @@
                                     
                                 </div>
                                 <div class="align-items-left">
-                                    {{-- <form action="{{route("loud.view",$loud->id)}}" method="GET">
-                                        <button class="btn btn-info btn-sm ms-1"> view </button>
-                                    </form> --}}
                                     <form action="{{route("loud.delete",$loud->id)}}" method="POST">
                                         @csrf
                                         @method('delete')
@@ -179,5 +165,3 @@
             </div>
         </div>
     </div>
-  
-    @endsection

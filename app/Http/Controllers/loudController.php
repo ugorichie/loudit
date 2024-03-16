@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Db;
 use App\Models\loud;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Redis;
 
 class loudController extends Controller
 {
@@ -41,10 +43,34 @@ class loudController extends Controller
                   //  return view('home');
             if($loud){
 
-                return redirect()->route('home')-> with('success', 'Loud was created successfully');
+                return redirect()->route('loud.index')-> with('success', 'YES O! that your idea was LOUD');
             }else{
-                return view('home');
+                return redirect()->route('loud.index')-> with('success', 'sorry, Idea not LOUD ENOUGH');
             }
 
     }
+
+    //get louds from the database
+    public function get_all_louds(){
+       // $loud = loud::all();
+       
+        return view('home', ["louds" => loud::orderBy('id', 'desc')->paginate(3)]);
+        //orderBy is a function to order results, works on eloquent models, but not collections ##readUp
+        //paginate() function is to sectionalize the results 
+    }
+
+
+    public function delete_loud($id){
+        $loud = loud::where('id',$id)->firstOrfail();
+        // dump($loud );
+        // die();
+        $loud->delete();
+
+        return redirect()->route('loud.index')-> with('success', 'that idea! not LOUD anymore');
+
+    }
+
+    
+
+
 }
