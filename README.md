@@ -117,7 +117,10 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
   In this way, laravel is smart enough to bind the model with the ID in the back, and hence you can do your actions like DELETE/UPDATE )))
 
 
-(  10.)  READ ACTION
-        to view, just a 
+(  10.)  READ ACTION ( R in CRUD)
+        to view, just a single result from the multiple result being fetched from the ddatabase
+        for this we need --> new view page, a public function (method)
+
+        
 
 
