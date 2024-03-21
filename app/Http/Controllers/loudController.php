@@ -12,14 +12,14 @@ class loudController extends Controller
 {
     //
 
-    public function create_loud(Request $request){
+    public function create_loud(){
                 // dump($_POST);
                 // die();
                 //$loud = $_POST['loud']; ---> this is to show that we can have POST request on laravel
 
                         //WAYS TO INSERT INTO THE DB
 
-                        $data = $request->validate([
+                        $data = request()->validate([
                     'loud' => 'required|max:300|min:1'
 
                 ]);
@@ -72,8 +72,9 @@ class loudController extends Controller
     }
 
     public function get_single_loud($id){
+        $editting = true;
         $louds = DB::table('louds')->where('id',$id)->get();
-        return view('single',['louds'=>$louds]);
+        return view('single',['louds'=>$louds, $editting]);
         
 
                     //     or 
@@ -83,7 +84,45 @@ class loudController extends Controller
 
     }
 
+
+    public function get_single_loud_edit($id){
+        $editing = true;
+        $louds = DB::table('louds')->where('id',$id)->get();
+        return view('single',['louds'=>$louds,'editing' => $editing]);
+        
+    }
+
+
+
+    public function get_single_loud_update( $id){
+        
+        //VALIDATING THE INPUT VIA REQUEST() helper function
+        $data = request()->validate([
+            'loud' => 'required|max:300|min:1'
+            
+        ]);
+
+
+        //USING QUERY STRING METHOD TO UPDATE.
+        DB::table('louds')-> where('id',$id)->update([
+                'loud' => $data['loud'],
+            ]);
+
+        //FETCH IT BACK FOR IT TO BE DISPLAYED
+      $louds = DB::table('louds')-> where('id',$id)->get();
+        
+        
+        return view('single', ['louds'=>$louds])->with('success','that Loud has been updated successfully');
+           
+        }
+
+       // $louds = DB::table('louds')->where('id',$id)->get();
+        
+    }
+
+
+
     
 
 
-}
+

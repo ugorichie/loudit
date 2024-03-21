@@ -39,7 +39,9 @@
                 </div>
             </div>
             <div class="col-6">
-
+                @if(session()->has('success'))
+                    @include('includes.success')
+                @endif
                 @foreach($louds as $loud )
                 <div class="mt-3">
                     <div class="card">
@@ -56,9 +58,9 @@
                                     
                                 </div>
                                 <div class="align-items-left">
-                                    <form action='{{route("loud.delete",['id'=>$loud->id])}}' method="POST">
+                                    <form action='{{route("loud.delete",$loud->id)}}' method="POST">
                                         @csrf
-                                        <a href="{{route("loud.show",$loud->id)}}"  class="btn btn-dark btn-sm"> EDIT </a>
+                                        <a href="{{route("loud.edit",$loud->id)}}"  class="btn btn-dark btn-sm"> EDIT </a>
 
                                         @method('delete')
                                         <button class="btn btn-danger btn-sm"> X </button>
@@ -67,7 +69,23 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="fs-6 fw-light text-muted">
+                            @if ($editing ?? false)
+                            <form action="{{route('loud.update',$loud->id)}}" method="POST">
+                                @csrf
+                            <div class="mb-3">
+                        
+                                    <textarea class="form-control" id="idea" rows="3" name="loud">{{$loud->loud}} </textarea>
+                                    @error('loud') 
+                                        {{-- this loud above here is the name of the input field --}}
+                                        <span style="color: red" class="fs-15"> {{$message}} </span>
+                                    @enderror
+                                </div>
+                                <div class="">
+                                    <button class="btn btn-secondary btn-sm"> Update Loud </button>
+                                </div>
+                            </form>
+                            @endif
+                            <p class="fs-6 fw-light text-muted mt-3">
                                     {{$loud->loud}}
                             </p>
                             <div class="d-flex justify-content-between">

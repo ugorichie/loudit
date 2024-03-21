@@ -34,6 +34,10 @@ Route::get('/', [loudController::class, 'get_all_louds'])-> name('loud.index'); 
 
 Route::get('/home/{id}', [loudController::class, 'get_single_loud'])-> name('loud.show'); //-> TO SHOW SINGLE
 
+Route::get('/home/{id}/edit', [loudController::class, 'get_single_loud_edit'])-> name('loud.edit'); //-> TO SHOW SINGLE FOR EDITING
+
+Route::post('/home/{id}/edit', [loudController::class, 'get_single_loud_update'])-> name('loud.update'); //-> TO SHOW SINGLE FOR EDITING
+
 Route::post('/create-loud', [loudController::class, 'create_loud'])-> name('loud.create'); //-> TO CREATE 
 
 Route::delete('/delete-loud/{id}', [loudController::class, 'delete_loud'])-> name('loud.delete'); //-> TO DELETE
