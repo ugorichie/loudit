@@ -30,6 +30,7 @@ TO understand better, refer to   LAYOUT/LAYOUT.BLADE.PHP page  and  HOME.BLADE.P
 
 
   (  3.) DATABASE AND MORE.
+  
 firstly, it is possible to connect to your database from your command line, and create new database but its okay to use the traditional way of creating a database from your phpmyadmin
 
 ----> YOU have the choice to work with not only 'mysql' databse, but you can also integrate 3 other types of database in laravel, all you need do is head over to the 'config\database.php' , scroll to see what other options could be compartible, then go to your '.env' file and change the value of 'DB_CONNECTION' to your selected database connection.
@@ -41,6 +42,7 @@ firstly, it is possible to connect to your database from your command line, and 
   
   
    (  4.)  DATABASE SEEDING
+
 there are severals ways to seed data into the database (PUT DUMMY DATA INTO THE DB)
 -----> BY USING FACTORIES / DATABASE SEEDER  
 -----> BY USING MODELS AND CONTROLLERS (AVAILABLE IN LARAVEL 10 upwards) -> where you 'use' a MODEL, defined in a controller (eg:   $loud = new loud(['loud' => 'come to me' , likes => '2'])) and call the global availaible 'save()' function -----> check 'controller.dashboard.php'
@@ -49,6 +51,7 @@ there are severals ways to seed data into the database (PUT DUMMY DATA INTO THE 
 
 
   (  5.) SUBMIT VIA FORM 
+
 this would entail submitting to the database via a form, which can also be done in 3 ways
 
 ----> CAKE PHP: by traditional use of $_POST['name'] -: But this has no validation process, you would have to specify yours
@@ -65,6 +68,7 @@ this would entail submitting to the database via a form, which can also be done 
 
 
 ( 6.) HAVING A SUCCESS/FLASJH MESSAGE 
+
 This only is required when we create a post and its successful, you want to tell the user a success message.
 How to do that?
 In the return redirect(), you append a with() function; e.g  return redirect('home')->with('success', 'created successfuly').
@@ -102,6 +106,7 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
 
 
 (  9.)  DELETE ACTION
+
         we can have this in 3 ways
         --> RAW SQL.
         --> QUERY METHOD (facades\support\db)
@@ -118,6 +123,7 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
 
 
 (  10.)  READ ACTION ( R in CRUD)
+
         to view, just a single result from the multiple result being fetched from the ddatabase
         for this we need --> new view page, a public function (method)
 
