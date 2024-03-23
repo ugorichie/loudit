@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\dashboard;
 use App\Http\Controllers\loudController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,3 +43,5 @@ Route::post('/create-loud', [loudController::class, 'create_loud'])-> name('loud
 
 Route::delete('/delete-loud/{id}', [loudController::class, 'delete_loud'])-> name('loud.delete'); //-> TO DELETE
 
+//implementing search button
+//Route::get('/', [dashboard::class, 'index'])-> name('search'); //-> DO THE SEARCH FILTER IN THE KITCHEN

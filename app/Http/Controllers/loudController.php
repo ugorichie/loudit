@@ -34,7 +34,7 @@ class loudController extends Controller
                 //     'loud' => $data['loud'],
                 // ]);
                         //OR
-                // Using the QUERY STRING METHOD -> support\facades\db
+                // Using the QUERY BUILDER METHOD -> support\facades\db
                     // $submit = DB::table('louds')->insert([
                     //     'loud' => $data['loud'],
                     //    // 'likes' => 3
@@ -52,9 +52,17 @@ class loudController extends Controller
 
     //get louds from the database
     public function get_all_louds(){
-       // $loud = loud::all();
-       
-        return view('home', ["louds" => loud::orderBy('id', 'desc')->paginate(3)]);
+       // this is to filter the 'search' option in the dasboard
+       $req =  request()->validate([
+        'search' => 'nullable|max:50|min:1'
+       ]);
+
+       if($req){
+        $loud = loud::orderBy('id', 'desc')->where('loud', 'like', '%'. $req['search'].'%' );
+       }else{
+        $loud = loud::orderBy('id', 'desc');
+       }
+        return view('home', ["louds" =>$loud->paginate(3)]);
         //orderBy is a function to order results, works on eloquent models, but not collections ##readUp
         //paginate() function is to sectionalize the results 
     }
@@ -103,7 +111,7 @@ class loudController extends Controller
         ]);
 
 
-        //USING QUERY STRING METHOD TO UPDATE.
+        //USING QUERY BUILDER METHOD TO UPDATE.
         DB::table('louds')-> where('id',$id)->update([
                 'loud' => $data['loud'],
             ]);

@@ -30,7 +30,7 @@ TO understand better, refer to   LAYOUT/LAYOUT.BLADE.PHP page  and  HOME.BLADE.P
 
 
   (  3.) DATABASE AND MORE.
-  
+
 firstly, it is possible to connect to your database from your command line, and create new database but its okay to use the traditional way of creating a database from your phpmyadmin
 
 ----> YOU have the choice to work with not only 'mysql' databse, but you can also integrate 3 other types of database in laravel, all you need do is head over to the 'config\database.php' , scroll to see what other options could be compartible, then go to your '.env' file and change the value of 'DB_CONNECTION' to your selected database connection.
@@ -109,7 +109,7 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
 
         we can have this in 3 ways
         --> RAW SQL.
-        --> QUERY METHOD (facades\support\db)
+        --> QUERY BUILDER (facades\support\db)
         --> ELOQUENT MODEL (app\model)
       in this project, we want to work/be proficient with ELOQUENT MODEL.
       all you need do in the function is use the static method on our model (loud)
@@ -124,8 +124,29 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
 
 (  10.)  READ ACTION ( R in CRUD)
 
-        to view, just a single result from the multiple result being fetched from the ddatabase
-        for this we need --> new view page, a public function (method)
+        to view, just a single result from the multiple result being fetched from the database
+        for this we need 
+        -----> new view page i.e 'viewsingle.blade.php'
+        -----> a public function (method) in the controller
+        -----> a route that catches the ID of the item attached to the query string in the url, using a GET method i.e get('/view/{id}' ...)
+
+
+(  11.) UPDATE ( U in CRUD )
+
+      mostly done after viewing a single item, with a button attached to it to to update or delete the item, usually we would need a new page to show a text-input for updating the current item but here we learnt we can pass a truthy variable to 'wiewsingle.blade.php' to help differentiate wether the user just wants to see, or also wants to update the item
+
+      see -> loudController\get_single_loud_update() for understanding
+
+  
+(  12.) SEARCH BAR  --> 
+      This is to filter all the fetched items to return only items with the searched input.
+      this is easy using the php/mysql 'like' wildCard.
+      NB: the search input has to be passed as a GET request, nothing confidentail
+
+      see -> loudController.php --> where the search input is accepted and checked not to be empty and WHERE wildcard statement is made to check, if it exists in the database. if it does, it returns items containing only that searched word (filtering) , 
+      loudController explains more
+
+      use ' HOME ' leftsidebard key to go back to home page
 
         
 
