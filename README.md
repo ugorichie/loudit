@@ -146,7 +146,18 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
       see -> loudController.php --> where the search input is accepted and checked not to be empty and WHERE wildcard statement is made to check, if it exists in the database. if it does, it returns items containing only that searched word (filtering) , 
       loudController explains more
 
-      use ' HOME ' leftsidebard key to go back to home page
+      use ' HOME ' leftsidebard key to go back to home page (USE THE dashboard route for the link)
+
+
+
+
+(  13.) CREATING COMMENTS AND RELATIONSHIP IN LARAVEL
+
+        This is like creating louds (a new table is needed, in relation to the main loud to which you are commenting under), hence we need a MODEL , MIGRATION , ROUTE AND CONTROLLER
+
+        ----> php artisan make:model comment  -m -c    'the -m and -c tells laravel to create a migration and controller at once' 
+
+
 
         
 
