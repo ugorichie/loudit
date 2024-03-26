@@ -1,10 +1,12 @@
 <div>
-    <form action="{{route('comment.create')}}" method="POST">
-        <div class="mb-3">
-            <textarea name='comment' class="fs-6 form-control" rows="3"></textarea>
+    
+    <form action="{{route('comment.create',$loud->id)}}" method="POST" >
+        @csrf
+        <div class="mb-3 mt-2">
+            <textarea name='comment' class="fs-6 form-control" rows="1"></textarea>
         </div>
         <div>
-            <button class="btn btn-primary btn-sm btn-primary"> Post Comment </button>
+            <button type='submit' class="btn btn-primary btn-sm btn-primary"> Post Comment </button>
         </div>
     </form>
 

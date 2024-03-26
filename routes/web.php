@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\loudController;
+use App\Http\Controllers\CommentController;
+
+use App\Models\comment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,17 +34,29 @@ Route::get('/terms', function(){
     return view('terms');
 });
 
+##########################
+##############
+// LOUD ROUTES
+
 Route::get('/', [loudController::class, 'get_all_louds'])-> name('loud.index'); //-> HOME PAGE
 
 Route::get('/home/{id}', [loudController::class, 'get_single_loud'])-> name('loud.show'); //-> TO SHOW SINGLE
 
 Route::get('/home/{id}/edit', [loudController::class, 'get_single_loud_edit'])-> name('loud.edit'); //-> TO SHOW SINGLE FOR EDITING
 
-Route::post('/home/{id}/edit', [loudController::class, 'get_single_loud_update'])-> name('loud.update'); //-> TO SHOW SINGLE FOR EDITING
+Route::post('/home/{id}/update', [loudController::class, 'get_single_loud_update'])-> name('loud.update'); //-> TO SHOW SINGLE FOR EDITING
 
-Route::post('/create-loud', [loudController::class, 'create_loud'])-> name('loud.create'); //-> TO CREATE 
+Route::post('/loud/create', [loudController::class, 'create_loud'])-> name('loud.create'); //-> TO CREATE 
 
-Route::delete('/delete-loud/{id}', [loudController::class, 'delete_loud'])-> name('loud.delete'); //-> TO DELETE
+Route::delete('/loud/delete/{id}', [loudController::class, 'delete_loud'])-> name('loud.delete'); //-> TO DELETE
+
+
+#############################
+###################
+// COMMENTS ROUTES
+Route::post('/loud/{id}/comment', [CommentController::class, 'create_comment'])-> name('comment.create'); //-> TO CREATE A COMMENT
+
+
 
 //implementing search button
 //Route::get('/', [dashboard::class, 'index'])-> name('search'); //-> DO THE SEARCH FILTER IN THE KITCHEN

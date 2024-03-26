@@ -9,5 +9,8 @@ class comment extends Model
 {
     use HasFactory;
 
-    
+    protected $fillable = [
+        'comments',
+        'loud_id'
+    ];
 }
