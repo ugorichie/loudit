@@ -55,7 +55,7 @@
                                     </span>
                                 </div>
                             </div>
-                           @include('includes.comment')
+                           {{-- @include('includes.comment') --}}
                         </div>
                     </div>
 

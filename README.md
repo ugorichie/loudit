@@ -153,12 +153,19 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
 
 (  13.) CREATING COMMENTS AND RELATIONSHIP IN LARAVEL
 
-        This is like creating louds (a new table is needed, in relation to the main loud to which you are commenting under), hence we need a MODEL , MIGRATION , ROUTE AND CONTROLLER
+        creating comment is like creating louds (a new table is needed, in relation to the main loud to which you are commenting under), hence we need a MODEL , MIGRATION , ROUTE AND CONTROLLER
 
         ----> php artisan make:model comment  -m -c    'the -m and -c tells laravel to create a migration and controller at once' 
 
+        ---> every comments made in the app needs to be tied to a specific LOUD. hence the introduction of foriegn_key / relationship.
+
+        NB: Defining relationships in laravel when working with route model binding.
         the way you define relationships in laravel is through your MODEL, you go into the model and write a public function
-        NB: the name of the method should be the same name as the table that the current model you are in has a relationship with e.g louds have relationship with comment(comments table), hence the public function (method) has to be named comments ---> then in the method, you return the kind of relationship it has ( hasMany, belongsToMany, hasOne, etc)
+        -----> NB: the name of the method should be the same name as the table that the current model you are in has a relationship with e.g louds have relationship with comment(comments table), hence the public function (method) has to be named 'comments' ---> then in the method, you return the kind of relationship it has ( hasMany, belongsToMany, hasOne, etc) after which you tell what model-class it is referencing to, i.e (comment::class) and lastly pass in two important arguments after referencing.
+        -----> example ----> 
+        public function comments{
+            return $this->hasMany(comment::class, 'loud_id', 'id')
+        }
 
         
 

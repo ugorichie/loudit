@@ -81,10 +81,10 @@ class loudController extends Controller
 
     public function get_single_loud($id){
         // $editting = true;
-        $louds = DB::table('louds')->where('id',$id)->get();
-        $comment = DB::table('comments')->where('loud_id',$id)->get();
+        $louds = DB::table('louds')->where('id',$id)->get(); // this is to get a single loud using DB facades / QUERY BUILDER
+        $comment = DB::table('comments')->where('loud_id',$id)->get(); //this is to get comments on a loud using DB facades / QUERY BUILDERS
 
-       return view('single',['louds'=>$louds, 'comments'=>$comment]);
+       return view('single',['louds'=>$louds, 'comments' =>$comment]);
 
                     //     or 
                     // via ELOQUENT MODEL
@@ -98,7 +98,9 @@ class loudController extends Controller
     public function get_single_loud_edit($id){
         $editing = true;
         $louds = DB::table('louds')->where('id',$id)->get();
-        return view('single',['louds'=>$louds,'editing' => $editing]);
+        $comment = DB::table('comments')->where('loud_id',$id)->get(); //this is to get comments on a loud using DB facades / QUERY BUILDERS
+
+        return view('single',['louds'=>$louds,'editing' => $editing, 'comments' =>$comment]);
         
     }
 

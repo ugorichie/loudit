@@ -13,4 +13,8 @@ class comment extends Model
         'comments',
         'loud_id'
     ];
+
+    // public function comments(){
+    //     return $this->hasMany(Comment::class, 'loud_id', 'id');
+    // }
 }

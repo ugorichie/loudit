@@ -58,5 +58,13 @@ Route::post('/loud/{id}/comment', [CommentController::class, 'create_comment'])-
 
 
 
+#########################
+########################
+//REGISTER ROUTE
+Route::get('/register', function(){
+    return view('register');
+});
+
+
 //implementing search button
 //Route::get('/', [dashboard::class, 'index'])-> name('search'); //-> DO THE SEARCH FILTER IN THE KITCHEN
