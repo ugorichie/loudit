@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\comment;
+use Illuminate\Support\facades\db;
 
 class CommentController extends Controller
 {
@@ -21,4 +22,10 @@ class CommentController extends Controller
 
         return redirect(route('loud.show',$id ))->with('success', 'we see your comment on that Loud!');
     }
+
+    // public function get_comments($id){
+    //     $comment = DB::table('comments')->where('loud_id', $id)->get();
+
+    //     return view('single', ['comment' => $comment]);
+    // }
 }

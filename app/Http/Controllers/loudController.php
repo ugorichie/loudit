@@ -80,15 +80,17 @@ class loudController extends Controller
     }
 
     public function get_single_loud($id){
-        $editting = true;
+        // $editting = true;
         $louds = DB::table('louds')->where('id',$id)->get();
-        return view('single',['louds'=>$louds, $editting]);
-        
+       
+      // $louds = loud::findOrFail('id',$id );
+       return view('single',['louds'=>$louds]);
 
                     //     or 
                     // via ELOQUENT MODEL
 
             //  return view('single',['louds'=>$id]); --> doesnt work yet
+
 
     }
 

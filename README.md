@@ -157,8 +157,10 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
 
         ----> php artisan make:model comment  -m -c    'the -m and -c tells laravel to create a migration and controller at once' 
 
-
+        the way you define relationships in laravel is through your MODEL, you go into the model and write a public function
+        NB: the name of the method should be the same name as the table that the current model you are in has a relationship with e.g louds have relationship with comment(comments table), hence the public function (method) has to be named comments ---> then in the method, you return the kind of relationship it has ( hasMany, belongsToMany, hasOne, etc)
 
         
+
 
 

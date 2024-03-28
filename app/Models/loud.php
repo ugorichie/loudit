@@ -16,4 +16,8 @@ class loud extends Model
         // 'password',
     ];
 
+    public function comments(){
+        return $this->hasMany(comment::class, 'loud_id', 'id');
+    }
+
 }
