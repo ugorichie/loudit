@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\loudController;
+use App\Http\Controllers\userController;
 use App\Http\Controllers\CommentController;
 
 use App\Models\comment;
@@ -39,6 +40,7 @@ Route::get('/terms', function(){
 // LOUD ROUTES
 
 Route::get('/', [loudController::class, 'get_all_louds'])-> name('loud.index'); //-> HOME PAGE
+Route::post('/loud/create', [loudController::class, 'create_loud'])-> name('loud.create'); //-> TO CREATE 
 
 Route::get('/home/{id}', [loudController::class, 'get_single_loud'])-> name('loud.show'); //-> TO SHOW SINGLE
 
@@ -46,7 +48,6 @@ Route::get('/home/{id}/edit', [loudController::class, 'get_single_loud_edit'])->
 
 Route::post('/home/{id}/update', [loudController::class, 'get_single_loud_update'])-> name('loud.update'); //-> TO SHOW SINGLE FOR EDITING
 
-Route::post('/loud/create', [loudController::class, 'create_loud'])-> name('loud.create'); //-> TO CREATE 
 
 Route::delete('/loud/delete/{id}', [loudController::class, 'delete_loud'])-> name('loud.delete'); //-> TO DELETE
 
@@ -63,7 +64,10 @@ Route::post('/loud/{id}/comment', [CommentController::class, 'create_comment'])-
 //REGISTER ROUTE
 Route::get('/register', function(){
     return view('register');
-});
+})->name('user.registerpage');
+
+Route::post('/profile/create', [UserController::class, 'create_user'])-> name('user.create'); //-> TO CREATE 
+
 
 
 //implementing search button
