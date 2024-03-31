@@ -70,5 +70,16 @@ Route::post('/profile/create', [UserController::class, 'create_user'])-> name('u
 
 
 
+#########################
+########################
+//LOGIN ROUTE
+Route::get('/login', function(){
+    return view('login');
+})->name('user.loginpage');
+
+Route::post('/profile/create', [UserController::class, 'create_user'])-> name('user.create'); //-> TO CREATE 
+
+
+
 //implementing search button
 //Route::get('/', [dashboard::class, 'index'])-> name('search'); //-> DO THE SEARCH FILTER IN THE KITCHEN
