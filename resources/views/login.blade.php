@@ -1,5 +1,5 @@
 @extends('includes.layout.headerfoter')
-
+@include('includes.success')
 
 @section('content')
 <div class="container">
