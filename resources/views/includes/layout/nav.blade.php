@@ -8,15 +8,28 @@ data-bs-theme="dark">
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
+            @guest
+                {{-- if there is no session caught, hence the persion is a guest, everything in this @guest is displayed --}}
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/login">Login</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('user.registerpage')}}">Register</a>
             </li>
+            @endguest
+
+            @auth
+                {{-- if the user is logged in (i.e session starts), everything in @auth is displayed --}}
             <li class="nav-item">
-                <a class="nav-link" href="/profile">Profile</a>
+                <a class="nav-link" href="#"> Welcome. {{auth()->user()->name}} </a>
             </li>
+
+            <form action="{{route('user.logout')}}" method="post">
+                @csrf
+                <button class="btn btn-danger btn-sm"> LOG OUT</button>
+            </form>
+            @endauth
+
         </ul>
     </div>
 </div>

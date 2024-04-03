@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use PharIo\Manifest\Email;
 
 class UserController extends Controller
 {
@@ -26,7 +27,7 @@ class UserController extends Controller
         }else{
             $usernamed = $username;
         }
-        
+
         $data = User::create([
             'name' => $validation['fullname'],
             'username' => $usernamed,
@@ -42,9 +43,32 @@ class UserController extends Controller
 
     //login function
     public function login_user(){
-        $validation =  request()->validate([
 
+        //dd(request()->all());
+        $validation =  request()->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
+
+       if( auth()->attempt( $validation )){
+
+        request()->session()->regenerate();
+      return  redirect()->route('loud.index')->with('success', 'You now have access to your account');
+       }
+
+       return redirect()->route('user.loginpage')->withErrors([
+        'email' => 'either email or password was incorrect'
+       ]);
+    }
+
+
+    public function logout_user(){
+        auth()->logout();
+
+        request()->session()->invalidate();
+        request()->session()->regenerate();
+
+        return redirect()->route('user.loginpage')->with('success', 'You have been logged out');
     }
     
 }

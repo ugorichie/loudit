@@ -79,6 +79,8 @@ Route::get('/login', function(){
 
 Route::post('/profile/login', [UserController::class, 'login_user'])-> name('user.login'); //-> TO LOGIN
 
+Route::post('/profile/logout', [UserController::class, 'logout_user'])-> name('user.logout'); //-> TO LOGOUT
+
 
 
 //implementing search button
