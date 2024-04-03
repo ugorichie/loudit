@@ -1,11 +1,15 @@
 @extends('includes.layout.headerfoter')
-@include('includes.success')
+
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-sm-8 col-md-6">
+          
             <form class="form mt-5" action="" method="post">
+                @if(session()->has('success'))
+                    @include('includes.success')
+                @endif
                 @csrf
                 <h3 class="text-center text-dark">LOGIN</h3>
                 {{-- <div class="form-group">
@@ -18,7 +22,7 @@
                 </div>
                 <div class="form-group mt-3">
                     <label for="password" class="text-dark">Password:</label><br>
-                    <input type="text" name="password" id="password"  class="form-control">
+                    <input type="text" name="password" id="password" placeholder="********" class="form-control">
                 </div>
                
                 <div class="form-group">
@@ -26,7 +30,7 @@
                     <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit">
                 </div>
                 <div class="text-right mt-2">
-                    <a href="/login" class="text-dark">Login here</a>
+                    <a href="/register" class="text-dark">Register Here</a>
                 </div>
             </form>
         </div>

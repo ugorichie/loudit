@@ -77,7 +77,7 @@ Route::get('/login', function(){
     return view('login');
 })->name('user.loginpage');
 
-Route::post('/profile/create', [UserController::class, 'create_user'])-> name('user.create'); //-> TO CREATE 
+Route::post('/profile/login', [UserController::class, 'login_user'])-> name('user.login'); //-> TO LOGIN
 
 
 

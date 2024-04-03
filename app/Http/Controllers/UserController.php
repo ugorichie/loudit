@@ -14,17 +14,37 @@ class UserController extends Controller
             'fullname' => 'required|min:3',
             'username' => 'required|min:2',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmation',
+            'password' => 'required|confirmed',
            
         ]);
+        
+        $username = $validation['username'];
+        $letter = '@';
+        $usernamed = '';
+        if(strpos($username,$letter) !== 0){ //this is to check the username to be sure @ exists, if not, add it
+            $usernamed = '@'.$username;
+        }else{
+            $usernamed = $username;
+        }
+        
         $data = User::create([
-            'fullname' => $validation['fullname'],
-            'username' => $validation['username'],
+            'name' => $validation['fullname'],
+            'username' => $usernamed,
             'email' => $validation['email'],
             'password' => Hash::make($validation['password']),
         ]);
 
-        return view('login')->with('success', 'account created successfully, kindly log in with your details');
+        return redirect()->route('user.loginpage')->with('success', 'account created successfully, kindly log in with your details');
+    }
+
+
+    
+
+    //login function
+    public function login_user(){
+        $validation =  request()->validate([
+
+        ]);
     }
     
 }
