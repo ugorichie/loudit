@@ -35,7 +35,7 @@ class UserController extends Controller
             'password' => Hash::make($validation['password']),
         ]);
 
-        return redirect()->route('user.loginpage')->with('success', 'account created successfully, kindly log in with your details');
+        return redirect()->route('login')->with('success', 'account created successfully, kindly log in with your details');
     }
 
 
@@ -56,7 +56,7 @@ class UserController extends Controller
       return  redirect()->route('loud.index')->with('success', 'You now have access to your account');
        }
 
-       return redirect()->route('user.loginpage')->withErrors([
+       return redirect()->route('login')->withErrors([
         'email' => 'either email or password was incorrect'
        ]);
     }
@@ -68,7 +68,7 @@ class UserController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerate();
 
-        return redirect()->route('user.loginpage')->with('success', 'You have been logged out');
+        return redirect()->route('login')->with('success', 'You have been logged out');
     }
     
 }

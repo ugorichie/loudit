@@ -15,9 +15,13 @@ class CommentController extends Controller
             'comment' => 'required|min:1' 
         ]);
 
+        $comment['user_id'] = auth()->user()->id;
+
+
         $submit = comment::create([
             'loud_id' => $id,
             'comments' => $comment['comment'],
+            'user_id' => $comment['user_id'],
         ]); 
 
         return redirect(route('loud.show',$id ))->with('success', 'we see your comment on that Loud!');

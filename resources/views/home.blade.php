@@ -9,9 +9,18 @@
                 @if(session()->has('success'))
                     @include('includes.success')
                 @endif
+
+                @guest
+                <h4> Welcome !, Here are some of the most liked Louds.</h4> 
+                <h6> <a href="/register">Register</a> Now to <span class="text-muted">  LOUD YOUR IDEAS </span></h6> 
+                @endguest
+
+                @auth
+               {{-- this checks that, only when you are logged in can you share a loud --}}
                 <h4> Loud yours ideas </h4>
                 @include('includes.loudform')
                 <hr>
+                @endauth
 
                 @foreach($louds as $loud )
                 <div class="mt-3">
@@ -21,9 +30,9 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center">
                                     <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                                        src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Mario" alt="Mario Avatar">
+                                        src="https://api.dicebear.com/6.x/fun-emoji/svg?seed={{$loud->user->name}}" alt="Mario Avatar">
                                     <div>
-                                        <h5 class="card-title mb-0"><a href="#"> Mario
+                                        <h5 class="card-title mb-0"><a href="#"> {{$loud->user->name}}
                                             </a></h5>
                                     </div>
                                     
@@ -35,7 +44,10 @@
                                         @csrf
                                         @method('delete')
                                         <a href="{{route("loud.show",$loud->id)}}"  class="btn btn-info btn-sm"> view </a>
+                                        @auth
+                                        
                                         <button class="btn btn-danger btn-sm"> X </button>
+                                        @endauth
                                     </form>
                                 </div>
                             </div>

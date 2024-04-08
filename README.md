@@ -167,6 +167,31 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
             return $this->hasMany(comment::class, 'loud_id', 'id')
         }
 
+
+(  14. ) REGISTRATION 
+
+
+
+
+(  15.) LOGGIN AND LOG OUT.
+
+
+
+(  16. ) AUTHORIZATION BASICS
+  ----> add a foriegn key to the loud table to store who created a loud
+  ----> run the migrate 
+  ---> where you are creating the loud, go in and store the user_id , using auth()->user()->id
+  ----> remember to add it to the fillables for loud
+  ---> do the immidiate above for comments too
+  ----> you might get null if not logged in for the submit loud, so make sure online logged in users can share louds
+
+  ---> to show name of person thst created a comment
+  {remember we need relationships for comment and user}
+
+  /////YOU NEED TO THOROUGHLY UNDERSTAND MODEL-RELATIONSHIPS
+  ---> define a relationship between a user and loud in models (loud belongsTo) and (user = hasMany)
+  ---> do the same for comments 
+  -------> WHEN DEFINING RELATIONSHIPS, MAKE SURE THEY HAVE THE SAME NAME WITH THE MODELS involved
         
 
 

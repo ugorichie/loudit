@@ -17,14 +17,16 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center">
                                     <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                                        src="https://api.dicebear.com/6.x/fun-emoji/svg?seed=Mario" alt="Mario Avatar">
+                                        src="https://api.dicebear.com/6.x/fun-emoji/svg?seed={{$loud->name}}" alt="Mario Avatar">
                                     <div>
-                                        <h5 class="card-title mb-0"><a href="#"> Mario
-                                            </a></h5>
+                                        <h5 class="card-title mb-0">{{$loud->name}}</h5>
+                                        <span><a href="#">{{$loud->username}}</a></span>
                                     </div>
                                     
                                 </div>
                                 <div class="align-items-left">
+                                    @auth
+                                        
                                     <form action='{{route("loud.delete",$loud->id)}}' method="POST">
                                         @csrf
                                         <a href="{{route("loud.edit",$loud->id)}}"  class="btn btn-dark btn-sm"> EDIT </a>
@@ -32,6 +34,7 @@
                                         @method('delete')
                                         <button class="btn btn-danger btn-sm"> X </button>
                                     </form>
+                                    @endauth
                                 </div>
                             </div>
                         </div>

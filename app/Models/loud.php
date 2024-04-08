@@ -12,12 +12,16 @@ class loud extends Model
 
     protected $fillable = [
         'loud',
-        //'likes',
+        'user_id',
         // 'password',
     ];
 
     public function comments(){
         return $this->hasMany(comment::class, 'loud_id', 'id');
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
 }

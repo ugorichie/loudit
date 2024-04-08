@@ -11,10 +11,15 @@ class comment extends Model
 
     protected $fillable = [
         'comments',
-        'loud_id'
+        'loud_id',
+        'user_id'
     ];
 
     // public function comments(){
     //     return $this->hasMany(Comment::class, 'loud_id', 'id');
     // }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

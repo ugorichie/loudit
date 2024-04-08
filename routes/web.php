@@ -55,7 +55,7 @@ Route::delete('/loud/delete/{id}', [loudController::class, 'delete_loud'])-> nam
 #############################
 ###################
 // COMMENTS ROUTES
-Route::post('/loud/{id}/comment', [CommentController::class, 'create_comment'])-> name('comment.create'); //-> TO CREATE A COMMENT
+Route::post('/loud/{id}/comment', [CommentController::class, 'create_comment'])-> name('comment.create')->middleware('auth'); //-> TO CREATE A COMMENT
 
 
 
@@ -75,7 +75,7 @@ Route::post('/profile/create', [UserController::class, 'create_user'])-> name('u
 //LOGIN ROUTE
 Route::get('/login', function(){
     return view('login');
-})->name('user.loginpage');
+})->name('login');
 
 Route::post('/profile/login', [UserController::class, 'login_user'])-> name('user.login'); //-> TO LOGIN
 
