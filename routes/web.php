@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/terms', function(){
     return view('terms');
-});
+})->name('terms');
 
 ##########################
 ##############

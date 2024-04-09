@@ -1,5 +1,5 @@
    
-@extends('layout.layout')
+@extends('includes.layout.headerfoter')
 
 @section('content')
 <h1 style="text-align: center"> <u>  TERMS AND CONDITIONS </u> </h1>

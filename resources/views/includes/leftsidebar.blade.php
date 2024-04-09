@@ -17,7 +17,7 @@
                                 <span>Feed</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="{{route('terms')}}">
                                 <span>Terms</span></a>
                         </li>
                         <li class="nav-item">
@@ -30,8 +30,11 @@
                         </li>
                     </ul>
                 </div>
+                @auth
+                    
                 <div class="card-footer text-center py-2">
                     <a class="btn btn-link btn-sm" href="#">View Profile </a>
                 </div>
+                @endauth
             </div>
         </div>
