@@ -68,7 +68,7 @@ class loudController extends Controller
        }else{
         $loud = loud::orderBy('id', 'desc');
        }
-        return view('home', ["louds" =>$loud->paginate(3)]);
+        return view('home', ["louds" =>$loud->paginate(3)->withQueryString()]);
         //orderBy is a function to order results, works on eloquent models, but not collections ##readUp
         //paginate() function is to sectionalize the results 
     }

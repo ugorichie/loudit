@@ -71,4 +71,9 @@ class UserController extends Controller
         return redirect()->route('login')->with('success', 'You have been logged out');
     }
     
+    public function show_users(){
+        $user =  user::all();
+
+        return view('includes.searchbar', compact('user'));
+    }
 }
