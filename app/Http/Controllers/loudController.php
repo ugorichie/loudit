@@ -138,14 +138,21 @@ class loudController extends Controller
 
 
         //USING QUERY BUILDER METHOD TO UPDATE.
-        DB::table('louds')-> where('id',$id)->update([
-                'loud' => $data['loud'],
-            ]);
+        // DB::table('louds')-> where('id',$id)->update([
+        //         'loud' => $data['loud'],
+        //     ]);
+
+        // or use the model::query()
+
+        loud::query()
+        -> where('id',$id)->update([
+                    'loud' => $data['loud'],
+                ]);
 
         //FETCH IT BACK FOR IT TO BE DISPLAYED
         $louds = DB::table('louds')->where('louds.id',$id)
         ->join('users', 'louds.user_id', '=', 'users.id')
-        ->select('louds.*', 'users.name', 'users.userusername')
+        ->select('louds.*', 'users.name', 'users.username')
         ->get();
 
         // $comment = DB::table('comments')->where('loud_id',$id)->get(); //this is to get comments on a loud using DB facades / QUERY BUILDERS

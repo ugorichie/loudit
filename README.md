@@ -29,7 +29,7 @@ TO understand better, refer to   LAYOUT/LAYOUT.BLADE.PHP page  and  HOME.BLADE.P
 
 
 
-  (  3.) DATABASE AND MORE.
+  (  3.) DATABASE AND MORE. ----------------> ( https://youtu.be/p1ZCbfUvd-s?si=-eyzrY483rax_-8g )
 
 firstly, it is possible to connect to your database from your command line, and create new database but its okay to use the traditional way of creating a database from your phpmyadmin
 
@@ -50,7 +50,7 @@ there are severals ways to seed data into the database (PUT DUMMY DATA INTO THE 
 
 
 
-  (  5.) SUBMIT VIA FORM 
+  (  5.) SUBMIT VIA FORM  ---------------> ( https://youtu.be/42KFW-KMrnc?si=Rm6bav2gf36TYlKD)
 
 this would entail submitting to the database via a form, which can also be done in 3 ways
 
@@ -67,7 +67,7 @@ this would entail submitting to the database via a form, which can also be done 
 
 
 
-( 6.) HAVING A SUCCESS/FLASJH MESSAGE 
+( 6.) HAVING A SUCCESS/FLASJH MESSAGE   ------------> ( https://youtu.be/DLkI2YyNgrQ?si=uJYqvZxwDs4-x7NI)
 
 This only is required when we create a post and its successful, you want to tell the user a success message.
 How to do that?
@@ -78,8 +78,8 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
     @endif
 
 
-
-(  7.) SHOWING FORM ERROR
+ 
+(  7.) SHOWING FORM ERROR   
       this is an effort to show error associated to a form, om input.
       traditionally it is placed just below the form field 
       ------> @error('input_name')
@@ -88,7 +88,7 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
 
 
 
-(  8.) PAGINATION
+(  8.) PAGINATION   ----------------> ( https://youtu.be/J5_lb0RqnEQ?si=oiTqndckHb0rv56b )
 
     pagination simply means to sectionalize your results fetched from database into pages (where users can click next/previous) to see more results from the database.
     NB: that the paginate() function only works for eloquent model (loud::orderBy('column_name', 'desc')->paginate(5))
@@ -105,7 +105,7 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
 
 
 
-(  9.)  DELETE ACTION
+(  9.)  DELETE ACTION  -------------> ( https://youtu.be/J50Q-d_r9j4?si=0rp3RykO3Mu3490s)
 
         we can have this in 3 ways
         --> RAW SQL.
@@ -131,14 +131,17 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
         -----> a route that catches the ID of the item attached to the query string in the url, using a GET method i.e get('/view/{id}' ...)
 
 
-(  11.) UPDATE ( U in CRUD )
+        ROUTE MODEL BINDING -------------> ( https://youtu.be/ZX_bkEHJECA?si=ZCZOkf82XMnMh1eU)
+
+
+(  11.) UPDATE ( U in CRUD )    -----------> ( https://youtu.be/W15cy3T6kys?si=fHgmLUFBmzMIjogN )
 
       mostly done after viewing a single item, with a button attached to it to to update or delete the item, usually we would need a new page to show a text-input for updating the current item but here we learnt we can pass a truthy variable to 'wiewsingle.blade.php' to help differentiate wether the user just wants to see, or also wants to update the item
 
       see -> loudController\get_single_loud_update() for understanding
 
   
-(  12.) SEARCH BAR  --> 
+(  12.) SEARCH BAR  ---------> (https://youtu.be/R58XZ8pAXoE?si=_gB3N7nhwA-Fbas7)
       This is to filter all the fetched items to return only items with the searched input.
       this is easy using the php/mysql 'like' wildCard.
       NB: the search input has to be passed as a GET request, nothing confidentail
@@ -151,7 +154,7 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
 
 
 
-(  13.) CREATING COMMENTS AND RELATIONSHIP IN LARAVEL
+(  13.) CREATING COMMENTS AND RELATIONSHIP IN LARAVEL   -------> ( https://youtu.be/qK_Nfdxeb_0?si=lfTDDqlgp28YuVKh )
 
         creating comment is like creating louds (a new table is needed, in relation to the main loud to which you are commenting under), hence we need a MODEL , MIGRATION , ROUTE AND CONTROLLER
 
@@ -168,16 +171,19 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
         }
 
 
-(  14. ) REGISTRATION 
+(  14. ) REGISTRATION  ------> ( https://youtu.be/qlPxmu6kMA8?si=RCc_yTFu-UgQ4WAm )
 
 
 
 
-(  15.) LOGGIN AND LOG OUT.
+(  15.) LOGGIN AND LOG OUT. ------> ( https://youtu.be/6jEN2v1eSNI?si=kTMMsWPnoHaFzldk )
 
 
 
-(  16. ) AUTHORIZATION BASICS
+(  16. ) AUTHORIZATION BASICS  ------->  ( https://youtu.be/0uEWSnqfXqQ?si=zx3ttMz893WSEXyy)
+  This explains more about relationships between tables and how to link them with models and their inbuilt function ( belongsTo. hasMany , belongstoMany) 
+  
+        steps to carry out this phase 
   ----> add a foriegn key to the loud table to store who created a loud
   ----> run the migrate 
   ---> where you are creating the loud, go in and store the user_id , using auth()->user()->id
@@ -192,7 +198,16 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
   ---> define a relationship between a user and loud in models (loud belongsTo) and (user = hasMany)
   ---> do the same for comments 
   -------> WHEN DEFINING RELATIONSHIPS, MAKE SURE THEY HAVE THE SAME NAME WITH THE MODELS involved
-        
 
+
+
+  (  17. ) ROUTE GROUPING  -------->> ( https://www.youtube.com/watch?v=D7ztp2I2Xc8 )
+          This is used in cases where you have too many routes in your web.php , you can further groupp them to have a cleaner and more organized 
+
+          Route::grouping(['prefix'=>'home', ] function(){
+
+              ALL THE ROUTE THAT HAVE THE SAME PREFIX COME IN HERE -> but this time without the prefix
+          }
+          
 
 
