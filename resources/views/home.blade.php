@@ -22,6 +22,10 @@
                 <hr>
                 @endauth
 
+                
+
+                @if (count($louds) != 0)
+                    
                 @foreach($louds as $loud )
                 <div class="mt-3">
                     <div class="card">
@@ -73,6 +77,14 @@
 
                 </div>
                  @endforeach
+                @else
+
+                    <h5> ... NO RECORDS FOUND FOR &nbsp; <b>{{request('search')}} </b> </h5>
+                    
+                @endif
+                    
+               
+
                  {{$louds->links()}}
                  {{-- NB: this above is for the paginate button, the $louds is the variable gotten from the controller in which 
                  the eloquent:model result from database is stored in --}}

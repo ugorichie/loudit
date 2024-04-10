@@ -4,7 +4,7 @@
                     </div>
                     <div class="card-body">
                         <form action="{{route('loud.index')}}" method="GET">
-                                
+                            {{-- {{request()->search}} this is to show what the user searched/filtered the loud by --}}
                             <input value='{{request()->search}}' placeholder="..." class="form-control w-100" type="text" name="search">
                             <button class="btn btn-dark mt-2"> Search</button>
                         </form>
