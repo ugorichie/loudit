@@ -76,4 +76,17 @@ class UserController extends Controller
 
         return view('includes.searchbar', compact('user'));
     }
+
+
+    public function show_user(user $user){
+
+        return view('users.show', compact('user'));
+    }
+
+    public function edit_user(user $user){
+        $editing = true;
+
+        return view('users.show', compact('user', 'editing'));
+
+    }
 }

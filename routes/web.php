@@ -94,6 +94,12 @@ Route::group(['prefix'=>'/profile', 'as'=>'user.'], function(){
 });
 
 
+############################
+#####################
+Route::get('/profile/{user}', [userController::class, 'show_user'])->name('profile');
+
+Route::post('/profile/{user}/edit', [userController::class, 'edit_user'])->name('profile.edit');
+
 
 //implementing search button
 //Route::get('/', [dashboard::class, 'index'])-> name('search'); //-> DO THE SEARCH FILTER IN THE KITCHEN

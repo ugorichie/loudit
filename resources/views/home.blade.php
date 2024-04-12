@@ -24,9 +24,10 @@
 
                 
 
-                @if (count($louds) != 0)
+               
                     
-                @foreach($louds as $loud )
+                @forelse ($louds as $loud )
+                    
                 <div class="mt-3">
                     <div class="card">
                         
@@ -36,7 +37,7 @@
                                     <img style="width:50px" class="me-2 avatar-sm rounded-circle"
                                         src="https://api.dicebear.com/6.x/fun-emoji/svg?seed={{$loud->user->name}}" alt="Mario Avatar">
                                     <div>
-                                        <h5 class="card-title mb-0"><a href="#"> {{$loud->user->name}}
+                                        <h5 class="card-title mb-0"><a href="{{route('profile',$loud->user->id )}}"> {{$loud->user->name}}
                                             </a></h5>
                                     </div>
                                     
@@ -76,14 +77,11 @@
                     </div>
 
                 </div>
-                 @endforeach
-                @else
-
-                    <h5> ... NO RECORDS FOUND FOR &nbsp; <b>{{request('search')}} </b> </h5>
+                @empty
                     
-                @endif
-                    
-               
+                <h5 class="text-center"> ... NO RECORDS FOUND FOR &nbsp; <b>'{{request('search')}} </b>' </h5>
+                @endforelse
+           
 
                  {{$louds->links()}}
                  {{-- NB: this above is for the paginate button, the $louds is the variable gotten from the controller in which 
