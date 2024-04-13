@@ -12,11 +12,14 @@
                 <div class="px-3 pt-4 pb-2">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
-                            <form action="" method="post"> 
+                            <form action="{{route('profile.update', auth()->id())}}" method="post"> 
 
                         
                             <img style="width:150px" class="me-2 avatar-sm rounded-circle"
                                 src="https://api.dicebear.com/6.x/fun-emoji/svg?seed={{$user->name}}" alt="Mario Avatar">
+
+                                <label for="Name" class="fs-5"> Image :</label>
+                                <input name="profile_pic" type="file" class="card-title mb-0 form-controlphp arti">
                             <div>
                                 <label for="Name" class="fs-5"> Name :</label>
                                 <input name="name" class="card-title mb-0 form-control mb-1" value="{{$user->name}}">

@@ -89,4 +89,17 @@ class UserController extends Controller
         return view('users.show', compact('user', 'editing'));
 
     }
+
+    public function update_user(user $user){
+        $validation = request()->validate([
+            'name' => 'required|min:3',
+            'username' => 'required|min:3',
+            'about' => 'max:1999'
+        ]);
+
+        $user = user::update();
+
+        return view('users.show', compact('user', 'editing'));
+
+    }
 }

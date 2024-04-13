@@ -16,12 +16,17 @@ data-bs-theme="dark">
             <li class="nav-item">
                 <a class="nav-link" href="{{route('user.registerpage')}}">Register</a>
             </li>
+           
             @endguest
 
             @auth
                 {{-- if the user is logged in (i.e session starts), everything in @auth is displayed --}}
             <li class="nav-item">
                 <a class="nav-link" href="#"> Welcome. {{auth()->user()->name}} </a>
+            </li> 
+            &nbsp;
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{{route('profile', auth()->id())}}"> <b> Profile </b> </a>
             </li>
 
             <form action="{{route('user.logout')}}" method="post">

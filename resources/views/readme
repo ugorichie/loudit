@@ -211,3 +211,14 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
           
 
 
+(   18, ) ROUTE RESOURCE  -------> 
+
+
+
+
+
+(   19 ) IMAGE / FILE UPLOAD ------->
+
+          ->create a form as normal
+          -> create a migration for adding new column to the database
+          -> add your fillables in the Models

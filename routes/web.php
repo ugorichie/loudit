@@ -100,6 +100,8 @@ Route::get('/profile/{user}', [userController::class, 'show_user'])->name('profi
 
 Route::post('/profile/{user}/edit', [userController::class, 'edit_user'])->name('profile.edit');
 
+Route::post('/profile/{user}/update', [userController::class, 'update_user'])->name('profile.update');
+
 
 //implementing search button
 //Route::get('/', [dashboard::class, 'index'])-> name('search'); //-> DO THE SEARCH FILTER IN THE KITCHEN
