@@ -94,12 +94,27 @@ class UserController extends Controller
         $validation = request()->validate([
             'name' => 'required|min:3',
             'username' => 'required|min:3',
-            'about' => 'max:1999'
+            'about' => 'nullable|max:1999',
+            'image' => 'image|nullable'
         ]);
 
-        $user = user::update();
+        if(isset($validation['image'])){
+        // GIVE THE IMAGE A UNIQUE NAME 
+            //  $temp = explode( '.' , $_FILES['image']['name']);
+            //  $image = round(microtime(true)).'.'.end($temp);   ----> Instead of doing this // we do the below
+           
 
-        return view('users.show', compact('user', 'editing'));
+            $temp = request()->file('image')->getClientOriginalExtension();  //this will tell you the picture extention
+            $newFileName = round(microtime(true)).'.'.$temp; //this will then rename the pic to something unique
+            $validation['image'] = $newFileName;
+           // dd($validation['image']);
+            $imagePath = request()->file('image')->storeAs('public',$newFileName); //save the pic in laravels defined folder
+
+        }
+
+        $user->update($validation);
+
+        return view('users.show', compact('user'));
 
     }
 }

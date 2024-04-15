@@ -10,16 +10,20 @@
             <div class="col-6">
                 <div class="card">
                 <div class="px-3 pt-4 pb-2">
+                    <div class="d-flex align-items-left">
+                        <a href="{{route('profile', $user->id)}}" class="btn btn-sm btn-dark">view</a>
+                    </div>
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
-                            <form action="{{route('profile.update', auth()->id())}}" method="post"> 
-
+                            <form enctype="multipart/form-data" action="{{route('profile.update', auth()->id())}}" method="post"> 
+                                @csrf
+                                
                         
                             <img style="width:150px" class="me-2 avatar-sm rounded-circle"
                                 src="https://api.dicebear.com/6.x/fun-emoji/svg?seed={{$user->name}}" alt="Mario Avatar">
 
                                 <label for="Name" class="fs-5"> Image :</label>
-                                <input name="profile_pic" type="file" class="card-title mb-0 form-controlphp arti">
+                                <input name="image" type="file" class="card-title mb-0 form-controlphp arti">
                             <div>
                                 <label for="Name" class="fs-5"> Name :</label>
                                 <input name="name" class="card-title mb-0 form-control mb-1" value="{{$user->name}}">
@@ -32,7 +36,7 @@
                     </div>
                     <div class="px-2 mt-4">
                         <h5 class="fs-5"> About : </h5>
-                        <textarea name="about" value="" rows="3" cols="55" >  </textarea>
+                        <textarea name="about" rows="3" cols="55" > {{$user->about}}</textarea>
                         <div class="d-flex justify-content-start mt-2">
                            <button type="subit" class="btn btn-sm btn-secondary"> UPDATE </button>
                         </div>
@@ -73,9 +77,7 @@
                    <div class="px-2 mt-4">
                        <h5 class="fs-5"> About : </h5>
                        <p class="fs-6 fw-light">
-                           This book is a treatise on the theory of ethics, very popular during the
-                           Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes
-                           from a line in section 1.10.32.
+                         {{$user->about}}
                        </p>
                        <div class="d-flex justify-content-start">
                            <a href="#" class="fw-light nav-link fs-6 me-3"> <span class="fas fa-user me-1">
