@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Db;
+// use Illuminate\Support\Facades\Db;
 use PharIo\Manifest\Email;
 
 class UserController extends Controller
@@ -107,7 +109,7 @@ class UserController extends Controller
             $temp = request()->file('image')->getClientOriginalExtension();  //this will tell you the picture extention
             $newFileName = round(microtime(true)).'.'.$temp; //this will then rename the pic to something unique
             $validation['image'] = $newFileName;
-           // dd($validation['image']);
+           
             $imagePath = request()->file('image')->storeAs('public',$newFileName); //save the pic in laravels defined folder
 
         }
@@ -116,5 +118,17 @@ class UserController extends Controller
 
         return view('users.show', compact('user'));
 
+    }
+
+    public function getImage( $user){
+
+        $user = DB::table('users')->where('id', $user)->select('image','name')->get();
+
+        if($user !== null){
+            return 'storage/' . $user->image;
+        }else{
+            return "https://api.dicebear.com/6.x/fun-emoji/svg?seed=$user->name";
+                
+        }
     }
 }

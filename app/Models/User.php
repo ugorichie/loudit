@@ -52,4 +52,12 @@ class User extends Authenticatable
     public function comment(){
         return $this->hasMany(comment::class);
     }
+
+    public function getImage(){
+        if($this->image){
+            return ;
+        }else{
+            return ; 
+        }
+    }
 }
