@@ -55,9 +55,9 @@ class User extends Authenticatable
 
     public function getImage(){
         if($this->image){
-            return ;
+            return url('storage/'.$this->image) ;
         }else{
-            return ; 
+            return "https://api.dicebear.com/6.x/fun-emoji/svg?seed={$this->name}" ; 
         }
     }
 }

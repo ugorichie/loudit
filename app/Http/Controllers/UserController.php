@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Db;
+use Illuminate\Support\Facades\Storage;
 // use Illuminate\Support\Facades\Db;
 use PharIo\Manifest\Email;
 
@@ -112,6 +113,8 @@ class UserController extends Controller
            
             $imagePath = request()->file('image')->storeAs('public',$newFileName); //save the pic in laravels defined folder
 
+            Storage::disk('public')->delete( $user->image); //this is to delete previous image before uploading new one
+            
         }
 
         $user->update($validation);
