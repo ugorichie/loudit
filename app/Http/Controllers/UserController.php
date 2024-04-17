@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Db;
 use Illuminate\Support\Facades\Storage;
-// use Illuminate\Support\Facades\Db;
+ use Illuminate\Support\Facades\Mail;
 use PharIo\Manifest\Email;
 
 class UserController extends Controller
@@ -37,6 +38,8 @@ class UserController extends Controller
             'email' => $validation['email'],
             'password' => Hash::make($validation['password']),
         ]);
+
+        Mail::to($data->email)->send(new WelcomeEmail($data));  //this is linked to WelcomeEmail Class, used for sending mail to newly regsitered users
 
         return redirect()->route('login')->with('success', 'account created successfully, kindly log in with your details');
     }

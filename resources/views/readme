@@ -222,3 +222,32 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
           ->create a form as normal
           -> create a migration for adding new column to the database
           -> add your fillables in the Models
+
+
+(  20 )
+
+
+
+
+
+
+(   21  )  LARAVEL MAILER ( HAVING TO SEND EMAIL ) -------> https://youtu.be/bwk1EEKKcN4?si=6iqZd5Slvdhu5DZc
+
+          1 ---> create a mailable class, using php artisan make:mail  WelcomeEmail   //WelcomeEmail would be the name of the class
+          ----> after this command, php will go and make a folder in the app directory and this said class will have like 3 methods.
+          ENVELOPE METHOD:  this will have the subject, cc, from  etc 
+          CONTENT METHOD: This is where the email content template will be , including whatever details we want from the DB
+                        (for the content of the email, we would need to create a new balde file that would handle that)
+          ATTACHMENT METHOD: This will be responsible for handling attachments/files
+
+          for the content method, we might for sure want to pass on some data of the user like the name to the email, hence this will require us to  --->create a property of a user , with a model and also define it in the public construct, as done in the app/mail/welccomeEmail file
+
+          how do we then send the mail. 
+          we first 'use' the Illuminate/Support/Facades/Mail. to call the Mail::to, as shown in the User-Controller class 
+
+          AFTER THAT, we need to define our smtp settings in laravels .env file, for the purpose of testing, we use mailtrap
+          www.mailtrap.com is a mail testing platform (sending and testing)
+          we changed laravels default smtp settings to that of mailtrap
+
+          LASTLY, we can also add attachment to our email, by adding it to the third METHOD in the WelcomeEmail
+          see video
