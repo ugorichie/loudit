@@ -251,3 +251,11 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
 
           LASTLY, we can also add attachment to our email, by adding it to the third METHOD in the WelcomeEmail
           see video
+
+
+    (  22  ) SETTING UP ACTIVE LINKS ------> https://youtu.be/7wRwQoOuRyk?si=QfknSLY0YoYHD9YN
+          This is simply done to tell the user , what page in the app he actually is ON
+          this is specified in the CLASS of the tag
+         <a class='{{(Route::is('profile')) ? 'bg-primary' : 'bg-ight'}}' > Profile </a>
+
+          the above explains that, if the a-tag named profile targets a route 'profile', it should have the bg-primary, else it should habe the bg-light
