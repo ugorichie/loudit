@@ -259,3 +259,19 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
          <a class='{{(Route::is('profile')) ? 'bg-primary' : 'bg-ight'}}' > Profile </a>
 
           the above explains that, if the a-tag named profile targets a route 'profile', it should have the bg-primary, else it should habe the bg-light
+
+
+    (   23  ) LARAVEL DEBUG BAR ----> 
+          ----> google laravel debugBar 
+          ----> select this one 'GitHub https://github.com › barryvdh › laravel-debugbar '  by BARRYVDH
+
+          to install it, type the following in the terminal
+             'composer require barryvdh/laravel-debugbar --dev'  ---- this should only wokr in the development stage
+
+          make sure that the APP_DEBUG in the .nev file is set to TRUE
+
+          This is a helper package., to help debug you laravel applications , shows you 
+          *slow queries
+          *fast queries
+          *repeted queries 
+          generally halps you know how to reform your codes better
