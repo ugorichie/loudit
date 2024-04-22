@@ -25,7 +25,7 @@
                 
 
                
-                    
+                {{-- this FORELSE is another way for writing FOREACH --}}
                 @forelse ($louds as $loud )
                     
                 <div class="mt-3">
@@ -50,8 +50,9 @@
                                         @method('delete')
                                         <a href="{{route("loud.show",$loud->id)}}"  class="btn btn-info btn-sm"> view </a>
                                         @auth
-                                        
-                                        <button class="btn btn-danger btn-sm"> X </button>
+                                        @if (auth()->id() == $loud->user_id)
+                                        <button class="btn btn-danger btn-sm"> X </button>   
+                                        @endif
                                         @endauth
                                     </form>
                                 </div>

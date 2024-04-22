@@ -275,3 +275,9 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
           *fast queries
           *repeted queries 
           generally halps you know how to reform your codes better
+
+
+  (    24 ) LARAVEL EAGER LOADING AND LAZY LOADING -------->
+        --> EAGER LOADING: Simply a way to load quicker data alongside when fetching data with MODEL::, by attaching laravels helper function 'with()', then pass in the set of data you want to eager load, which will already be defined in the said MODEL already.
+
+        --> LAZY LOADING: This is simply loading  up a data slowly (one after the other), this is turn will cause multiple query, which is seen in laravels debugBar

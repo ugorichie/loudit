@@ -85,8 +85,8 @@ class UserController extends Controller
 
 
     public function show_user(user $user){
-
-        return view('users.show', compact('user'));
+        $louds = $user->loud()->orderBy('id', 'Desc')->paginate(4);
+        return view('users.show', compact('user', 'louds'));
     }
 
     public function edit_user(user $user){

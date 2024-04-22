@@ -26,14 +26,17 @@
                                 </div>
                                 <div class="align-items-left">
                                     @auth
+                                        @if (auth()->id() == $loud->user_id)
+                                            
+                                        <form action='{{route("loud.delete",$loud->id)}}' method="POST">
+                                            @csrf
+                                            <a href="{{route("loud.edit",$loud->id)}}"  class="btn btn-dark btn-sm"> EDIT </a>
+    
+                                            @method('delete')
+                                            <button class="btn btn-danger btn-sm"> X </button>
+                                        </form>
+                                        @endif
                                         
-                                    <form action='{{route("loud.delete",$loud->id)}}' method="POST">
-                                        @csrf
-                                        <a href="{{route("loud.edit",$loud->id)}}"  class="btn btn-dark btn-sm"> EDIT </a>
-
-                                        @method('delete')
-                                        <button class="btn btn-danger btn-sm"> X </button>
-                                    </form>
                                     @endauth
                                 </div>
                             </div>

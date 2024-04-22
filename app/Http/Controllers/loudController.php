@@ -99,6 +99,7 @@ class loudController extends Controller
                     ->select('comments.*', 'users.name', 'users.username')
                     ->get(); //this is to get comments on a loud using DB facades / QUERY BUILDERS
 
+        
        return view('single',['louds'=>$louds, 'comments' =>$comment]);
 
                     //     or 
