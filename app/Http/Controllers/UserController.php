@@ -56,7 +56,7 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-       if( auth()->attempt( $validation )){
+       if(auth()->attempt( $validation )){
 
         request()->session()->regenerate();
       return  redirect()->route('loud.index')->with('success', 'You now have access to your account');
