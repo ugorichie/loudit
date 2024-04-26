@@ -224,7 +224,36 @@ In the return redirect(), you append a with() function; e.g  return redirect('ho
           -> add your fillables in the Models
 
 
-(  20 )
+(  20 )  UNDERSTANDING MANY TO MANY RELATIONSHIP :  ------>
+          example of this kind of relationship is -( a many users can follow one person, and one person can follow many users )
+          for this task, you need A PIVOT TABLE, this table holds the relationships, in this case its going to be a USER and a FOLLOWER.
+
+          -----> pivot tables are named like 'follower_user', its a combination name of the two models included
+          -----> php artisan make:migration create_follower_user_table --create (this would create a table and necessary contents in the migration file)
+          ------>  create the necessary columns in the migration folder, which is usually foriegn keys of existing tables
+          ------> table->foriegnId('follower_id')->constrained('users')->cascadeOnDelete()  //how to create the necessary columns
+          -------> RUN THE MIGRATION // php artisan migrate.
+          ------> Define your relationships in the appropriate model 
+                // to do this we write a public function which is in most case '2' needed in the model
+              --> belongsToMany is used for MANY TO MANY relationship   
+
+                -- public function follower(){ 
+                  
+                  return this->belongsToMany(User::class, 'follower_user','user_id', 'follower_id' );
+
+                  ...//the User::class needs 3 'string - follow up'
+                  1; the table we are saving to (i.e our pivot table 'follower_user')
+                  2; the id that is changing, (i.e user_id)
+                  3; the id that is constant (i.e follower_id)
+                }
+
+                the second function 
+                -- public function following(){
+                  return this->belongsToMany(user::class, 'follower_user', 'follower_id' , 'user_id')
+                }
+
+              ----> Create a route for the follow button
+
 
 
 

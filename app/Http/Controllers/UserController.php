@@ -114,9 +114,9 @@ class UserController extends Controller
             $newFileName = round(microtime(true)).'.'.$temp; //this will then rename the pic to something unique
             $validation['image'] = $newFileName;
            
-            $imagePath = request()->file('image')->storeAs('public',$newFileName); //save the pic in laravels defined folder
+            $imagePath = request()->file('image')->storeAs( 'public',$newFileName); //save the pic in laravels defined folder
 
-            Storage::disk('public')->delete( $user->image); //this is to delete previous image before uploading new one
+            Storage::disk('public')->delete( $user->image ?? ''); //this is to delete previous image before uploading new one
             
         }
 
